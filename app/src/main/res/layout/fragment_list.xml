@@ -4,33 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ThirdFragment"
-    android:background="@color/black_frag_c">
+    tools:context=".ui.list.ListFragment"
+    android:background="@color/gray">
 
-    <TextView
-        android:id="@+id/a"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="C"
-        android:textColor="@color/white"
-        android:textSize="150sp"
-        android:textAlignment="center"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        tools:listitem="@layout/item_adapter_list_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <Button
-        android:id="@+id/btnC"
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddNewUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:gravity="center"
-        android:text="Siguiente"
-        android:textColor="@color/green_frag_b"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/a"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"
+        android:src="@drawable/icon_add_new_user"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,12 +10,16 @@ import kotlinx.coroutines.launch
 
 class UserViewModel: ViewModel() {
 
-    private val repository = UserRepository()
+    private val userRepository = UserRepository()
+    val readAllData: LiveData<List<User>> = userRepository.readAllData
+
 
     fun addUser(user: User) {
-        repository.addUser(user)
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.addUser(user = user)
+        }
     }
 
-    fun getAllUsers() = repository.getAllUsers()
+    //fun getAllUsers() = userRepository.getAllUsers()
 
 }

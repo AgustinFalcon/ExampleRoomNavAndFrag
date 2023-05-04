@@ -27,4 +27,16 @@ class UserViewModel: ViewModel() {
         }
     }
 
+    fun deleteUser(user: User) {
+        viewModelScope.launch (Dispatchers.IO) {
+            userRepository.deleteUser(user = user)
+        }
+    }
+
+
+    fun deleteAllUsers() {
+        viewModelScope.launch (Dispatchers.IO) {
+            userRepository.deleteAllUsers()
+        }
+    }
 }

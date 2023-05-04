@@ -1,5 +1,6 @@
 package com.example.fragmentsandnavigation.ui.update
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -7,7 +8,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fragmentsandnavigation.R
@@ -16,7 +19,7 @@ import com.example.fragmentsandnavigation.model.User
 import com.example.fragmentsandnavigation.viewmodel.UserViewModel
 
 
-class UpdateFragment : Fragment() {
+class UpdateFragment : Fragment(), MenuProvider {
 
     private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var binding: FragmentUpdateBinding
@@ -34,6 +37,7 @@ class UpdateFragment : Fragment() {
 
         // The usage of an interface lets you inject your own implementation
         val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
 
         with(binding) {
@@ -49,10 +53,50 @@ class UpdateFragment : Fragment() {
 
 
 
+        /*menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.delete_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when(menuItem.itemId) {
+                    R.id.menu_delete -> {
+                        deleteUser()
+                        true
+                    }
+
+                    else -> {
+                        false
+                    }
+                }
+            }
+
+        })*/
 
 
 
         return binding.root
+    }
+
+
+
+    private fun deleteUser() {
+        val dialog = AlertDialog.Builder(requireContext())
+
+        dialog.setPositiveButton("Yes") { _,_ ->
+            userViewModel.deleteUser(args.currentUser)
+            Toast.makeText(requireContext(), "Succesfully removed: ${args.currentUser.firstName}", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+        }
+
+        dialog.setNegativeButton("No") { _,_ ->
+        }
+
+        dialog.setTitle("Delete ${args.currentUser.firstName}")
+        dialog.setMessage("Are you sure want to delete ${args.currentUser.firstName +""+args.currentUser.lastName}")
+
+        dialog.create().show()
+
     }
 
     private fun updateItem() {
@@ -83,7 +127,22 @@ class UpdateFragment : Fragment() {
         return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(secondName) && age.isEmpty())
     }
 
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.delete_menu, menu)
+    }
 
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when(menuItem.itemId) {
+            R.id.menu_delete -> {
+                deleteUser()
+                true
+            }
+
+            else -> {
+                true
+            }
+        }
+    }
 
 
 }

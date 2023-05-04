@@ -10,6 +10,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fragmentsandnavigation.R
 import com.example.fragmentsandnavigation.viewmodel.UserViewModel
@@ -35,10 +36,15 @@ class ListFragment : Fragment(), MenuProvider {
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
 
-
+        // Seteo el adapter
         val adapter = ListAdapter()
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+
+        // Linea divisoria del recyclerview
+        val divider = DividerItemDecoration(requireContext(), LinearLayoutManager(requireContext()).orientation)
+        binding.recyclerView.addItemDecoration(divider)
 
 
         binding.btnAddNewUser.setOnClickListener {

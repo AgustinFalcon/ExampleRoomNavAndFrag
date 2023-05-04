@@ -2,11 +2,10 @@ package com.example.fragmentsandnavigation.ui.list
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fragmentsandnavigation.R
-import com.example.fragmentsandnavigation.data.User
+import com.example.fragmentsandnavigation.model.User
 import com.example.fragmentsandnavigation.databinding.ItemAdapterListFragmentBinding
 
 
@@ -35,6 +34,12 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
             tvFirstName.text = currentItem.firstName
             tvLastName.text = currentItem.lastName
             tvAge.text = currentItem.age.toString()
+
+
+            rowLayoutListFrag.setOnClickListener {
+                val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+                holder.itemView.findNavController().navigate(action)
+            }
         }
     }
 

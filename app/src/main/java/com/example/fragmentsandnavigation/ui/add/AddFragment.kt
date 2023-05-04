@@ -3,7 +3,6 @@ package com.example.fragmentsandnavigation.ui.add
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fragmentsandnavigation.R
-import com.example.fragmentsandnavigation.data.User
-import com.example.fragmentsandnavigation.data.UserViewModel
+import com.example.fragmentsandnavigation.model.User
+import com.example.fragmentsandnavigation.viewmodel.UserViewModel
 import com.example.fragmentsandnavigation.databinding.FragmentAddBinding
 
 

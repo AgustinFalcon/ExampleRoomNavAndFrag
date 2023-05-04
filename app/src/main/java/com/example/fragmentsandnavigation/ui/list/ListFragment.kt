@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fragmentsandnavigation.R
-import com.example.fragmentsandnavigation.data.UserViewModel
+import com.example.fragmentsandnavigation.viewmodel.UserViewModel
 import com.example.fragmentsandnavigation.databinding.FragmentListBinding
 
 

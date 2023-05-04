@@ -1,8 +1,8 @@
-package com.example.fragmentsandnavigation.data
+package com.example.fragmentsandnavigation.repository
 
-import android.content.Context
 import androidx.lifecycle.LiveData
-import com.example.fragmentsandnavigation.MyApp
+import com.example.fragmentsandnavigation.data.UserDB
+import com.example.fragmentsandnavigation.model.User
 
 
 class UserRepository {
@@ -13,6 +13,10 @@ class UserRepository {
 
     suspend fun addUser(user: User) {
         userDao.addUser(user = user)
+    }
+
+    suspend fun updateUser(user: User) {
+        userDao.updateUser(user)
     }
 
 

@@ -1,9 +1,10 @@
-package com.example.fragmentsandnavigation.data
+package com.example.fragmentsandnavigation.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.fragmentsandnavigation.repository.UserRepository
+import com.example.fragmentsandnavigation.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -20,6 +21,10 @@ class UserViewModel: ViewModel() {
         }
     }
 
-    //fun getAllUsers() = userRepository.getAllUsers()
+    fun updateUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.updateUser(user)
+        }
+    }
 
 }

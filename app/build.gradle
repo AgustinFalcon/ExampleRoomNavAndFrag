@@ -76,4 +76,7 @@ dependencies {
     // Live data
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
+
+    // Coil o Glide
+    implementation("io.coil-kt:coil:1.1.1")
 }

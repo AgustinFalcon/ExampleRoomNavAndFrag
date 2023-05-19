@@ -46,6 +46,14 @@
             app:argType="com.example.fragmentsandnavigation.model.User" />
 
     </fragment>
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="com.example.fragmentsandnavigation.ui.list.person.PersonFragment"
+        android:label="PersonFragment" />
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.example.fragmentsandnavigation.ui.list.character.CharacterFragment"
+        android:label="CharacterFragment" />
 
 
 </navigation>

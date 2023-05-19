@@ -36,6 +36,7 @@ class ListFragment : Fragment(), MenuProvider {
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
 
+
         // Seteo el adapter
         val adapter = ListAdapter()
         binding.recyclerView.adapter = adapter
